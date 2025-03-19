@@ -12,7 +12,6 @@ const HistoryPage = ({ data }) => {
       <>
         <GlobalStyle />
         <Layout>
-          <h1>역사</h1>
           <p>게시글이 없습니다.</p>
         </Layout>
       </>
@@ -23,8 +22,6 @@ const HistoryPage = ({ data }) => {
     <>
       <GlobalStyle />
       <Layout>
-        <h1>{post.frontmatter.title}</h1>
-        <p>{post.frontmatter.date}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </Layout>
     </>
@@ -41,10 +38,6 @@ export const query = graphql`
       limit: 1
     ) {
       nodes {
-        frontmatter {
-          title
-          date(formatString: "YYYY-MM-DD")
-        }
         html
       }
     }

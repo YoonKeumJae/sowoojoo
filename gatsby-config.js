@@ -45,5 +45,12 @@ module.exports = {
         path: `${__dirname}/content/info`, // 소개 폴더 추가
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "footer",
+        path: `${__dirname}/content/footer`, // Footer 폴더 추가
+      },
+    },
   ],
 };

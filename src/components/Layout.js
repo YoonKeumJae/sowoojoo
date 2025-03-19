@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import sowoojooLogo from "../images/sowoojooLogo.png";
@@ -6,27 +6,34 @@ import sowoojooLogo from "../images/sowoojooLogo.png";
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto; /* 콘텐츠 높이에 따라 동적으로 설정 */
 `;
 
 const Header = styled.header`
-  /* background-color: rgb(242,167,59); */
   color: black;
   padding: 1rem;
   text-align: center;
+  height: 200px;
 `;
 
 const Footer = styled.footer`
-  background-color: #232129;
+  margin-top: 2rem;
+  background-color: rgb(150, 150, 150);
   color: white;
   padding: 1rem;
   text-align: center;
-  margin-top: auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Main = styled.main`
-  height: 100%;
+  flex: 1; /* 남은 공간을 차지 */
   padding: 0 400px;
+  min-height: calc(
+    100vh - 300px - 2rem
+  ); /* 100vh에서 Header(200px)와 Footer(100px)의 높이를 뺌 */
   overflow-y: auto;
 `;
 
@@ -49,17 +56,16 @@ const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(242, 167, 59);
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
-  border: 1px solid gray;
   height: 40px;
   width: 120px;
   border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 
+  color: rgb(242, 167, 59);
   &:hover {
     color: white;
     background-color: rgb(242, 167, 59);
@@ -71,12 +77,12 @@ const Dropdown = styled.div`
   display: inline-block;
 
   &:hover > div {
-    display: block;
+    display: block; /* 호버 시 드롭다운 메뉴 표시 */
   }
 `;
 
 const DropdownContent = styled.div`
-  display: none;
+  display: none; /* 기본적으로 숨김 */
   position: absolute;
   background-color: white;
   color: black;
@@ -104,6 +110,17 @@ const DropdownContent = styled.div`
 `;
 
 const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      markdownRemark(fileAbsolutePath: { regex: "/content/footer/" }) {
+        html
+      }
+    }
+  `);
+
+  const footerContent =
+    data?.markdownRemark?.html || "<p>Footer 내용이 없습니다.</p>"; // 데이터가 없을 경우 기본 메시지 표시
+
   return (
     <LayoutWrapper>
       <Header>
@@ -119,13 +136,13 @@ const Layout = ({ children }) => {
             </DropdownContent>
           </Dropdown>
           <NavLink to="/notice">공지사항</NavLink>
-          <NavLink to="/board-2">활동 게시판 2</NavLink>
+          <NavLink to="/programs">교육 프로그램</NavLink>
           <NavLink to="/board-3">활동 게시판 3</NavLink>
         </Nav>
       </Header>
       <Main>{children}</Main>
       <Footer>
-        <p>© 2025 All rights reserved.</p>
+        <div dangerouslySetInnerHTML={{ __html: footerContent }} />
       </Footer>
     </LayoutWrapper>
   );

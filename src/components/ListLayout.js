@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 
 const ListWrapper = styled.div`
-  /* padding: 1rem; */
+  margin-top: 1rem;
 `;
 
 const PostList = styled.ul`
@@ -12,22 +12,35 @@ const PostList = styled.ul`
 `;
 
 const PostItem = styled.li`
-  margin: 1.5rem 0;
-  padding: 0 1rem;
-  background-color: rgb(233, 233, 233);
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const PostLink = styled(Link)`
   text-decoration: none;
-  color: #663399;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+
   &:hover {
-    text-decoration: underline;
+    color: rgb(242, 167, 59);
   }
 `;
 
 const PostDate = styled.p`
   font-size: 0.9rem;
-  color: #555;
+  color: #888;
+  margin-top: 0.5rem;
 `;
 
 const ListLayout = ({ posts }) => {
@@ -36,9 +49,7 @@ const ListLayout = ({ posts }) => {
       <PostList>
         {posts.map((post) => (
           <PostItem key={post.fields.slug}>
-            <PostLink to={post.fields.slug}>
-              <h2>{post.frontmatter.title}</h2>
-            </PostLink>
+            <PostLink to={post.fields.slug}>{post.frontmatter.title}</PostLink>
             <PostDate>{post.frontmatter.date}</PostDate>
           </PostItem>
         ))}
