@@ -26,6 +26,7 @@ const Footer = styled.footer`
 const Main = styled.main`
   height: 100%;
   padding: 0 400px;
+  overflow-y: auto;
 `;
 
 const Title = styled(Link)`

@@ -9,11 +9,40 @@ module.exports = {
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-transformer-remark",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 800, // 이미지 최대 너비 설정
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "content",
-        path: `${__dirname}/content`, // content 디렉토리를 가리키도록 설정
+        name: "notice",
+        path: `${__dirname}/content/notice`, // 공지사항 폴더
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "history",
+        path: `${__dirname}/content/history`, // 역사 폴더
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "info",
+        path: `${__dirname}/content/info`, // 소개 폴더 추가
       },
     },
   ],
