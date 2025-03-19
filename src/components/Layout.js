@@ -25,7 +25,9 @@ const Footer = styled.footer`
 
 const Main = styled.main`
   height: 100%;
+  padding: 0 400px;
 `;
+
 const Title = styled(Link)`
   font-size: 2rem;
 `;
@@ -47,6 +49,38 @@ const NavLink = styled(Link)`
   }
 `;
 
+const Dropdown = styled.div`
+  position: relative;
+  display: inline-block;
+
+  &:hover > div {
+    display: block;
+  }
+`;
+
+const DropdownContent = styled.div`
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  z-index: 1;
+  
+  a {
+    color: black;
+    border-radius: 4px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+`;
+
 const Layout = ({ children }) => {
   const siteTitle = "SWJ"; // 고정된 사이트 이름
 
@@ -55,8 +89,14 @@ const Layout = ({ children }) => {
       <Header>
         <Title to="/">{siteTitle}</Title> {/* 고정된 사이트 이름 사용 */}
         <Nav>
-          <NavLink to="/about">소개</NavLink>
-          <NavLink to="/notice">공지사항</NavLink> {/* 이름 변경 */}
+          <Dropdown>
+            <NavLink to="/about/info">소개</NavLink>
+            <DropdownContent>
+              <Link to="/about/info">정보</Link>
+              <Link to="/about/history">역사</Link>
+            </DropdownContent>
+          </Dropdown>
+          <NavLink to="/notice">공지사항</NavLink>
           <NavLink to="/board-2">활동 게시판 2</NavLink>
           <NavLink to="/board-3">활동 게시판 3</NavLink>
         </Nav>

@@ -3,8 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 
 const ListWrapper = styled.div`
-  padding: 1rem;
-  padding: 0 200px;
+  /* padding: 1rem; */
 `;
 
 const PostList = styled.ul`
