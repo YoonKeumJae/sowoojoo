@@ -135,9 +135,17 @@ const Layout = ({ children }) => {
               <Link to="/about/history">역사</Link>
             </DropdownContent>
           </Dropdown>
+          <Dropdown>
+            <NavLink to="/programs/lecture">교육 프로그램</NavLink>
+            <DropdownContent>
+              <Link to="/programs/lecture">강의</Link>
+              <Link to="/programs/experience">체험</Link>
+              <Link to="/programs/puppet-show">인형극</Link>
+            </DropdownContent>
+          </Dropdown>
+          <NavLink to="/activities">활동내역</NavLink>
           <NavLink to="/notice">공지사항</NavLink>
-          <NavLink to="/programs">교육 프로그램</NavLink>
-          <NavLink to="/board-3">활동 게시판 3</NavLink>
+          <NavLink to="/map">오시는 길</NavLink> {/* 경로 수정 */}
         </Nav>
       </Header>
       <Main>{children}</Main>
