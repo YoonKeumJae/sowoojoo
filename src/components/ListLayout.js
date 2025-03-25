@@ -51,6 +51,8 @@ const PostItem = styled.li`
           border-radius: 10px;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           transition: transform 0.2s, box-shadow 0.2s;
+          display: flex;
+          justify-content: space-between;
 
           &:hover {
             transform: translateY(-5px);

@@ -77,7 +77,7 @@ const IndexPage = ({ data }) => {
         <NoticeSection>
           <SectionTitle>최근 공지사항</SectionTitle>
           {posts.length > 0 ? (
-            <ListLayout posts={posts.slice(0, 5)} compact={true} /> // 간단한 리스트 스타일 사용
+            <ListLayout styleType="list" posts={posts.slice(0, 5)} compact={true} /> // 간단한 리스트 스타일 사용
           ) : (
             <p>공지사항이 없습니다.</p>
           )}
