@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import GlobalStyle from "../styles/global";
+import GlobalStyle from "../styles/global"; // 글로벌 스타일 추가
 import styled from "styled-components";
 
 const TitleWrapper = styled.div`
@@ -37,26 +37,20 @@ const ImagesWrapper = styled.div`
   }
 `;
 
-export default function ActivityPost({ data }) {
-  const post = data?.markdownRemark; // 데이터가 없을 경우 null 처리
-  const images = data?.allFile?.nodes || []; // 이미지 데이터가 없을 경우 빈 배열 사용
+const ActivityPostTemplate = ({ data }) => {
+  const post = data.markdownRemark;
 
   if (!post) {
     return (
-      <>
-        <GlobalStyle />
-        <Layout>
-          <TitleWrapper>
-            <Title>게시글을 찾을 수 없습니다.</Title>
-          </TitleWrapper>
-        </Layout>
-      </>
+      <Layout>
+        <h1>게시글을 찾을 수 없습니다</h1>
+      </Layout>
     );
   }
 
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle /> {/* 글로벌 스타일 적용 */}
       <Layout>
         <TitleWrapper>
           <Title>{post.frontmatter.title}</Title>
@@ -64,14 +58,14 @@ export default function ActivityPost({ data }) {
         </TitleWrapper>
         <Content dangerouslySetInnerHTML={{ __html: post.html }} />
         <ImagesWrapper>
-          {images.map((image) => (
+          {data.allFile.nodes.map((image) => (
             <img key={image.id} src={image.publicURL} alt={image.name} />
           ))}
         </ImagesWrapper>
       </Layout>
     </>
   );
-}
+};
 
 export const query = graphql`
   query ($slug: String!) {
@@ -97,3 +91,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default ActivityPostTemplate;

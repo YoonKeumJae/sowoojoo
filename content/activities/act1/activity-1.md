@@ -5,4 +5,4 @@ type: "activity"
 ---
 
 이것은 첫 번째 활동내역입니다.
-[img](./sowoojooColors.png)
+![img](./sowoojooColors.png)
