@@ -12,12 +12,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: -apple-system, Roboto, sans-serif, serif;
-    background-color: #f4f4f4;
-    color: #232129;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #2c3e50;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50;
   }
 
   #___gatsby, #gatsby-focus-wrapper {
@@ -27,8 +31,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    color: #3498db;
     text-decoration: none;
-    color: inherit;
   }
 
   ul {

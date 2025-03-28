@@ -19,6 +19,7 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 800, // 이미지 최대 너비 설정
+              linkImagesToOriginal: false, // 원본 이미지 링크 비활성화
             },
           },
         ],
@@ -57,19 +58,6 @@ module.exports = {
       options: {
         name: "activities",
         path: `${__dirname}/content/activities`, // 활동내역 폴더 추가
-      },
-    },
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 800, // 이미지 최대 너비 설정
-            },
-          },
-        ],
       },
     },
   ],

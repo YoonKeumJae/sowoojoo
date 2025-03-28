@@ -132,7 +132,7 @@ const Layout = ({ children }) => {
             <NavLink to="/about/info">소개</NavLink>
             <DropdownContent>
               <Link to="/about/info">정보</Link>
-              <Link to="/about/history">역사</Link>
+              <Link to="/about/history">연혁</Link>
             </DropdownContent>
           </Dropdown>
           <Dropdown>

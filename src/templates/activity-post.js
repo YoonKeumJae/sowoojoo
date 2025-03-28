@@ -59,7 +59,12 @@ const ActivityPostTemplate = ({ data }) => {
         <Content dangerouslySetInnerHTML={{ __html: post.html }} />
         <ImagesWrapper>
           {data.allFile.nodes.map((image) => (
-            <img key={image.id} src={image.publicURL} alt={image.name} />
+            <img
+              key={image.id}
+              src={image.publicURL}
+              alt={image.name || "이미지를 불러올 수 없습니다."}
+              onError={(e) => (e.target.src = "/path/to/placeholder.png")} // 대체 이미지 경로
+            />
           ))}
         </ImagesWrapper>
       </Layout>
