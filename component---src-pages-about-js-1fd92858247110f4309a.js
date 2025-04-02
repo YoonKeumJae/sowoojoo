@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkswj=self.webpackChunkswj||[]).push([[432],{9434:function(u,e,s){s.r(e);var f=s(6540),n=s(4810);e.default=()=>((0,f.useEffect)((()=>{(0,n.oo)("/about/info")}),[]),null)}}]);
+//# sourceMappingURL=component---src-pages-about-js-1fd92858247110f4309a.js.map
