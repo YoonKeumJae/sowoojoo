@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
-
+import GlobalStyle from "../styles/global";
+import Layout from "../components/Layout";
+import styled from "styled-components";
 const Map = () => {
   const mapRef = useRef(null);
 
@@ -27,7 +29,15 @@ const Map = () => {
     }
   }, []);
 
-  return <div ref={mapRef} style={{ width: "500px", height: "500px" }} />;
+  return (
+    <>
+      <GlobalStyle />
+      <Layout>
+        <h1>오시는 길</h1>
+        <div ref={mapRef} style={{ width: "500px", height: "500px" }} />
+      </Layout>
+    </>
+  );
 };
 
 export default Map;

@@ -1,49 +1,64 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import GlobalStyle from "../styles/global";
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f9f9f9;
+`;
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+const Title = styled.h1`
+  font-size: 3rem;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 2rem;
+`;
+
+const Image = styled.img`
+  max-width: 300px;
+  margin-bottom: 2rem;
+`;
+
+const HomeButton = styled(Link)`
+  background-color: #3498db;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+`;
 
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <>
+      <GlobalStyle />
+      <Container>
+        <Image
+          src="https://via.placeholder.com/300x300.png?text=404+Not+Found"
+          alt="귀여운 404 이미지"
+        />
+        <Title>페이지를 찾을 수 없어요!</Title>
+        <Subtitle>앗! 잘못된 경로로 오신 것 같아요.</Subtitle>
+        <HomeButton to="/">홈으로 돌아가기</HomeButton>
+      </Container>
+    </>
+  );
+};
 
-export default NotFoundPage
-
-export const Head = () => <title>Not found</title>
+export default NotFoundPage;
