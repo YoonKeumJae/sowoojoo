@@ -1,16 +1,33 @@
-import React from "react";
-import GlobalStyle from "../styles/global";
-import Layout from "../components/Layout";
+import React, { useEffect, useRef } from "react";
 
-const MapPage = () => {
-  return (
-    <>
-      <GlobalStyle />
-      <Layout>
-        <p>오시는 길의 내용입니다.</p>
-      </Layout>
-    </>
-  );
+const Map = () => {
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    // 클라이언트 사이드에서만 실행
+    if (typeof window !== "undefined") {
+      // naver 객체가 준비될 때까지 주기적으로 체크
+      const checkInterval = setInterval(() => {
+        if (window.naver && window.naver.maps) {
+          clearInterval(checkInterval);
+
+          const location = new window.naver.maps.LatLng(37.5665, 126.978);
+          const mapOptions = {
+            center: location,
+            zoom: 17,
+          };
+          const map = new window.naver.maps.Map(mapRef.current, mapOptions);
+
+          new window.naver.maps.Marker({
+            map,
+            position: location,
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
+  return <div ref={mapRef} style={{ width: "500px", height: "500px" }} />;
 };
 
-export default MapPage;
+export default Map;

@@ -79,6 +79,13 @@ const PostDate = styled.span`
   display: ${(props) => (props.styleType === "album" ? "block" : "inline")};
 `;
 
+const Thumbnail = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+`;
+
 const ListLayout = ({ posts, styleType = "card" }) => {
   const validPosts = posts.filter(
     (post) => post && post.fields && post.fields.slug // null 값 및 slug 없는 항목 제거
@@ -89,6 +96,9 @@ const ListLayout = ({ posts, styleType = "card" }) => {
       <PostList styleType={styleType}>
         {validPosts.map((post) => (
           <PostItem key={post.fields.slug} styleType={styleType}>
+            {post.frontmatter.thumbnail && (
+              <Thumbnail src={post.frontmatter.thumbnail} alt={post.frontmatter.title} />
+            )}
             <PostLink to={post.fields.slug} styleType={styleType}>
               {post.frontmatter.title}
             </PostLink>
