@@ -1,3 +1,5 @@
+const path = require("path");
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -6,6 +8,7 @@ module.exports = {
     title: `swj`,
     siteUrl: `https://www.yourdomain.tld`,
   },
+  pathPrefix: "/build",
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-transformer-remark",

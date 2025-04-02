@@ -1,5 +1,6 @@
 const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
+const fs = require("fs-extra");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -56,4 +57,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
   });
+};
+
+exports.onPostBuild = async () => {
+  const publicDir = path.join(__dirname, "public");
+  const buildDir = path.join(__dirname, "build");
+
+  // public 디렉토리를 build 디렉토리로 이동
+  if (fs.existsSync(publicDir)) {
+    await fs.remove(buildDir); // 기존 build 디렉토리 삭제
+    await fs.move(publicDir, buildDir); // public 디렉토리를 build로 이동
+    console.log("Build directory moved to 'build'.");
+  }
 };
