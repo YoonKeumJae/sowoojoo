@@ -1,0 +1,140 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/activities/[slug]",
+      "regex": "^/activities/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/activities/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/notice/[slug]",
+      "regex": "^/notice/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/notice/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/posts/[...slug]",
+      "regex": "^/posts/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/posts/(?<nxtPslug>.+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/activities",
+      "regex": "^/activities(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/activities(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/intro",
+      "regex": "^/intro(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/intro(?:/)?$"
+    },
+    {
+      "page": "/intro/history",
+      "regex": "^/intro/history(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/intro/history(?:/)?$"
+    },
+    {
+      "page": "/intro/information",
+      "regex": "^/intro/information(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/intro/information(?:/)?$"
+    },
+    {
+      "page": "/map",
+      "regex": "^/map(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/map(?:/)?$"
+    },
+    {
+      "page": "/notice",
+      "regex": "^/notice(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/notice(?:/)?$"
+    },
+    {
+      "page": "/programs",
+      "regex": "^/programs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/programs(?:/)?$"
+    },
+    {
+      "page": "/programs/exp",
+      "regex": "^/programs/exp(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/programs/exp(?:/)?$"
+    },
+    {
+      "page": "/programs/lecture",
+      "regex": "^/programs/lecture(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/programs/lecture(?:/)?$"
+    },
+    {
+      "page": "/programs/puppet",
+      "regex": "^/programs/puppet(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/programs/puppet(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  },
+  "rewrites": []
+}

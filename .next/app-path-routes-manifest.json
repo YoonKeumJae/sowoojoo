@@ -1,0 +1,18 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/intro/history/page": "/intro/history",
+  "/activities/page": "/activities",
+  "/intro/information/page": "/intro/information",
+  "/page": "/",
+  "/programs/exp/page": "/programs/exp",
+  "/programs/page": "/programs",
+  "/programs/lecture/page": "/programs/lecture",
+  "/map/page": "/map",
+  "/notice/page": "/notice",
+  "/intro/page": "/intro",
+  "/programs/puppet/page": "/programs/puppet",
+  "/notice/[slug]/page": "/notice/[slug]",
+  "/activities/[slug]/page": "/activities/[slug]",
+  "/posts/[...slug]/page": "/posts/[...slug]"
+}
