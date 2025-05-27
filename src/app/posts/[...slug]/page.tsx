@@ -1,18 +1,19 @@
 import { notFound } from "next/navigation";
 import { getPostData, getAllPostsMeta } from "@/lib/markdown";
 
-interface PostPageProps {
-  params: { slug: string[] };
-}
-
 export async function generateStaticParams() {
   const posts = getAllPostsMeta();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}) {
   try {
-    const post = await getPostData(params.slug);
+    const { slug } = await params;
+    const post = await getPostData(slug);
     return (
       <main className="max-w-2xl mx-auto py-12 px-4">
         <h1 className="text-3xl font-bold mb-2">{post.title}</h1>

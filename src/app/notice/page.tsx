@@ -3,15 +3,16 @@ import { getAllPostsMeta } from "@/lib/markdown";
 
 const PAGE_SIZE = 10;
 
-export default function NoticePage({
+export default async function NoticePage({
   searchParams,
 }: {
-  searchParams?: { page?: string };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const posts = getAllPostsMeta().filter(
     (post) => post.slug[0] === "notice" && post.id
   );
-  const page = Number(searchParams?.page) || 1;
+  const { page: pageParam } = await searchParams;
+  const page = Number(pageParam) || 1;
   const totalPages = Math.ceil(posts.length / PAGE_SIZE);
   const paginated = posts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 

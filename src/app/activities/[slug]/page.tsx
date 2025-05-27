@@ -11,12 +11,13 @@ export async function generateStaticParams() {
 export default async function ActivityDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const posts = getAllPostsMeta().filter(
     (post) => post.slug[0] === "activities" && post.id
   );
-  const post = posts.find((post) => String(post.id) === params.slug);
+  const { slug } = await params;
+  const post = posts.find((post) => String(post.id) === slug);
   if (!post) return notFound();
   const full = await getPostData(post.slug);
   return (
